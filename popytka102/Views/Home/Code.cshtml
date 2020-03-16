@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.Title = "Code";
+}
+
+<h2>Игра с компьютером</h2>
+
+<h1>Крестики-нолики</h1>
+<style>
+    h3 {
+        margin-top: 50px; /* Отрицательный отступ между заголовком и текстом */
+    }
+</style>
+<head>
+
+    <script type="text/javascript">
+        function clkGameButton() {
+            if (isNaN(frmGame.nCells.value)) {
+                alert("Введите число клеток.");
+                return;
+            }
+            var n = parseInt(frmGame.nCells.value);
+            createField(n, n);
+        }
+        function initGame() {
+            gTexts['win1'] = 'Победил "'; gTexts['win2'] = '" !';
+            gTexts['playing'] = ''
+            gTexts['start'] = ''
+            gTexts['Wins'] = 'Игрок:'
+            gTexts['Losts'] = 'Компьютер:'
+            createField(n, n);
+        }
+      
+       
+    </script>
+    <link rel="stylesheet" type="text/css" href="~/Content/gamestyle.css" />
+    <script type="text/javascript" src="~/Scripts/gamescript.js"></script>
+    <script type="text/javascript">
+        function clkGameButton() { // событие начала новой игры
+            if (isNaN(frnG.nCells.value)) {
+                alert("Введите число клеток.");
+                return;
+            }
+            var n = parseInt(frnG.nCells.value);
+            createField(n, n);
+            gameinfo.innerText = "Начало игры. Всего точек " + nMaxPoint + "\nМинимальная вероятность победы:" + Math.round(nMaxPoint / (n * n) * 100) + "%";
+        }
+        function initGame() { // инициализация игры
+            gTexts['win1'] = 'Победил "'; gTexts['win2'] = '" !';
+            gTexts['playing'] = ''
+            gTexts['start'] = ''
+            gTexts['Wins'] = 'Игрок: '
+            gTexts['Losts'] = 'Компьютер: '
+            createField(3, 3); // создание игрового поля
+        }
+    </script>
+    
+   
+</head>
+<h3> Статистика побед </h3>
+<body onload="initGame();">
+    <table width="100%">
+        <tr>
+            <td width="50%">
+                <span id="gameinfo">Кликните по клетке, чтобы открыть её</span>
+            </td>
+            <td width="50%">
+                <form name="frnG" action="javascript:clkGameButton();">
+                    Размер поля: <input type="text" name="nCells" value="3" title="Число клеток" size="3">
+                    <input type="button" value="Начать игру" onclick="clkGameButton();">
+                    @*<input type="button" value="Вывести статистику игр" onclick="window.location.href='@Url.Action("Statistics", "Home")';" />*@
+                  <p></p>
+                
+              </form>
+            </td>
+        </tr>
+    </table>
+    @*<p padding:15px>
+        
+    </p>
+    <table border="1" align="left">
+        <tr>
+            <th>Игрок</th>
+            <th>Компьютер</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>*@
+    <center>
+        <div id="game">
+        </div>
+    </center>
+    
+    
+</body>

@@ -1,0 +1,27 @@
+﻿@model popytka102.Models.Login
+@{
+    ViewBag.Title = "LoginView";
+}
+
+<h2>LoginView</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        @Html.ValidationSummary()
+        <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
+        <p>
+            <label>Email</label><br />
+            @Html.EditorFor(x => x.Email)
+        </p>
+        <p>
+            <label>Пароль</label><br />
+            @Html.EditorFor(x => x.Password)
+        </p>
+        <form method="post">
+            <p><input type="submit" />Войти </p>
+            </form>
+</div>
+}
